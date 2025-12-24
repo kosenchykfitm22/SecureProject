@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 
 namespace SecureProject
@@ -15,6 +15,8 @@ namespace SecureProject
             if (string.IsNullOrEmpty(filename))
             {
                 Console.WriteLine("Invalid filename.");
+                Console.WriteLine("\nPress any key to exit...");
+                Console.ReadKey();
                 return;
             }
 
@@ -22,9 +24,9 @@ namespace SecureProject
             {
                 if (File.Exists(filename))
                 {
-                   string content = File.ReadAllText(filename);
-                   Console.WriteLine("File Content:");
-                   Console.WriteLine(content);
+                    string content = File.ReadAllText(filename);
+                    Console.WriteLine("File Content:");
+                    Console.WriteLine(content);
                 }
                 else
                 {
@@ -35,6 +37,9 @@ namespace SecureProject
             {
                 Console.WriteLine("Error reading file: " + ex.Message);
             }
+
+            Console.WriteLine("\nPress any key to exit...");
+            Console.ReadKey();
         }
     }
 }
