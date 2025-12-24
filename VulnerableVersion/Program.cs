@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 
 namespace VulnerableVersion
@@ -15,16 +15,16 @@ namespace VulnerableVersion
             if (string.IsNullOrEmpty(filename))
             {
                 Console.WriteLine("Invalid filename.");
+                Console.WriteLine("\nPress any key to exit...");
+                Console.ReadKey();
                 return;
             }
 
-            // VULNERABILITY: Command Injection
-            // This blindly passes user input to cmd.exe
             try
             {
                 ProcessStartInfo psi = new ProcessStartInfo();
                 psi.FileName = "cmd.exe";
-                psi.Arguments = "/c type " + filename; 
+                psi.Arguments = "/c type " + filename;
                 psi.RedirectStandardOutput = true;
                 psi.UseShellExecute = false;
                 psi.CreateNoWindow = true;
@@ -40,6 +40,9 @@ namespace VulnerableVersion
             {
                 Console.WriteLine("Error: " + ex.Message);
             }
+
+            Console.WriteLine("\nPress any key to exit...");
+            Console.ReadKey();
         }
     }
 }
